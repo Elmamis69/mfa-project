@@ -22,7 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-do7p!xoi3$lffu%x14!ntdf19nhp@1+ykm9y76c6kri!&4e!-*'
 
-#AUTH_USER_MODEL = 'auth_app.User'
+AUTH_USER_MODEL = 'auth_app.User'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'corsheaders',
     'rest_framework',
-    #'auth_app',
+    'auth_app',
 ]
 
 MIDDLEWARE = [

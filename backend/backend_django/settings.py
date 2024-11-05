@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework',
     'auth_app',
+    'axes'
 ]
 
 MIDDLEWARE = [
@@ -53,7 +54,18 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'axes.middleware.AxesMiddleware',  # Agrega esto justo después de 'django.middleware.security.SecurityMiddleware'
+
 ]
+AUTHENTICATION_BACKENDS = [
+    'axes.backends.AxesStandaloneBackend',  # Línea para django-axes
+    'django.contrib.auth.backends.ModelBackend',  # Autenticación por defecto de Django
+]
+# Opciones de configuración de django-axes
+AXES_FAILURE_LIMIT = 5  # Número máximo de intentos fallidos antes de bloquear
+AXES_COOLOFF_TIME = 1  # Tiempo de enfriamiento en horas
+AXES_ONLY_USER_FAILURES = True  # Bloquea intentos fallidos solo por usuario
+AXES_LOCKOUT_PARAMETERS = ['username']  # Bloqueo basado en el nombre de usuario
 
 ROOT_URLCONF = 'backend_django.urls'
 

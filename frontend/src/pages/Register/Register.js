@@ -21,7 +21,7 @@ export default function Login() {
   const cookies = new Cookies();
   const navigate = useNavigate();
 
-  const handleSubmit = async(event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     setLoading(true);
@@ -30,15 +30,15 @@ export default function Login() {
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify({username: data.get('username'), password: data.get('password')}),
+      body: JSON.stringify({ username: data.get('username'), password: data.get('password') }),
     });
     let responseJson = await response.json();
-    if(responseJson.status === "Registration failed") {
+    if (responseJson.status === "Registration failed") {
       alert(responseJson["message"]);
       setLoading(false);
     }
     else {
-      cookies.set("user_id", responseJson['user_id'], {path: "/", maxAge: 24*60*60});
+      cookies.set("user_id", responseJson['user_id'], { path: "/", maxAge: 24 * 60 * 60 });
       alert("Registration Succeeded");
       setLoading(false);
       navigate('/two-fa-register-page');
@@ -47,10 +47,10 @@ export default function Login() {
 
   return (
     <LoadingScreen
-    loading={loading}
-    spinnerColor="#AC3B61"
-    textColor="#AC3B61"
-    text="Please Wait"
+      loading={loading}
+      spinnerColor="#AC3B61"
+      textColor="#AC3B61"
+      text="Please Wait"
     >
       <Container component="main" maxWidth="xs">
         <CssBaseline />
@@ -62,8 +62,8 @@ export default function Login() {
             alignItems: 'center',
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-            <PersonAddIcon />
+          <Avatar sx={{ m: 1, bgcolor: 'transparent', width: 80, height: 80 }}>
+            <PersonAddIcon sx={{ color: 'blue', fontSize: 80 }} />
           </Avatar>
           <Typography component="h1" variant="h5">
             Registro

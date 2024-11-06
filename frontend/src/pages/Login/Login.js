@@ -93,6 +93,10 @@ export default function Login() {
               id="password"
               autoComplete="current-password"
             />
+            <div>
+              <img src="http://example.com/no-permitido.png" alt="Test Image" />
+              <script src="https://cdn.no-permitido.com/script.js"></script>
+            </div>
             <Button
               type="submit"
               fullWidth
